@@ -36,7 +36,7 @@ module.exports = function (app) {
   app.route('/_api/server.js')
     .get(function(req, res, next) {
       console.log('requested');
-      fs.readFile(__dirname + '/server.js', function(err, data) {
+      fs.readFile(process.cwd() + '/server.js', function(err, data) {
         if(err) return next(err);
         res.send(data.toString());
       });
@@ -44,7 +44,7 @@ module.exports = function (app) {
   app.route('/_api/routes/api.js')
     .get(function(req, res, next) {
       console.log('requested');
-      fs.readFile(__dirname + '/routes/api.js', function(err, data) {
+      fs.readFile(process.cwd() + '/routes/api.js', function(err, data) {
         if(err) return next(err);
         res.type('txt').send(data.toString());
       });
@@ -52,7 +52,7 @@ module.exports = function (app) {
   app.route('/_api/controllers/convertHandler.js')
     .get(function(req, res, next) {
       console.log('requested');
-      fs.readFile(__dirname + '/controllers/convertHandler.js', function(err, data) {
+      fs.readFile(process.cwd() + '/controllers/convertHandler.js', function(err, data) {
         if(err) return next(err);
         res.type('txt').send(data.toString());
       });
@@ -60,16 +60,28 @@ module.exports = function (app) {
 
   app.get('/_api/get-tests', cors(), function(req, res, next){
     console.log('requested');
+    let report = runner.report;
+    if (!report) {
+      try {
+        report = require('../test-report.json');
+      } catch (e) {
+        report = null;
+      }
+    }
+    if (report) {
+      return res.json(testFilter(report, req.query.type, req.query.n));
+    }
     if(process.env.NODE_ENV === 'test') return next();
     res.json({status: 'unavailable'});
   },
   function(req, res, next){
-    if(!runner.report) return next();
-    res.json(testFilter(runner.report, req.query.type, req.query.n));
+    let report = runner.report || require('../test-report.json');
+    if(!report) return next();
+    res.json(testFilter(report, req.query.type, req.query.n));
   },
   function(req, res){
     runner.on('done', function(report){
-      process.nextTick(() =>  res.json(testFilter(runner.report, req.query.type, req.query.n)));
+      process.nextTick(() =>  res.json(testFilter(report, req.query.type, req.query.n)));
     });
   });
   app.get('/_api/app-info', function(req, res) {

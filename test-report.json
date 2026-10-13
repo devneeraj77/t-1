@@ -1,0 +1,393 @@
+[
+  {
+    "title": "convertHandler should correctly read a whole number input.",
+    "context": " -> Unit Tests",
+    "state": "passed",
+    "assertions": [
+      {
+        "method": "equal",
+        "args": [
+          "convertHandler.getNum(input)",
+          "32"
+        ]
+      }
+    ]
+  },
+  {
+    "title": "convertHandler should correctly read a decimal number input.",
+    "context": " -> Unit Tests",
+    "state": "passed",
+    "assertions": [
+      {
+        "method": "equal",
+        "args": [
+          "convertHandler.getNum(input)",
+          "4.3"
+        ]
+      }
+    ]
+  },
+  {
+    "title": "convertHandler should correctly read a fractional input.",
+    "context": " -> Unit Tests",
+    "state": "passed",
+    "assertions": [
+      {
+        "method": "equal",
+        "args": [
+          "convertHandler.getNum(input)",
+          "0.75"
+        ]
+      }
+    ]
+  },
+  {
+    "title": "convertHandler should correctly read a fractional input with a decimal.",
+    "context": " -> Unit Tests",
+    "state": "passed",
+    "assertions": [
+      {
+        "method": "equal",
+        "args": [
+          "convertHandler.getNum(input)",
+          "0.5"
+        ]
+      }
+    ]
+  },
+  {
+    "title": "convertHandler should correctly return an error on a double-fraction (i.e. 3/2/3).",
+    "context": " -> Unit Tests",
+    "state": "passed",
+    "assertions": [
+      {
+        "method": "isNull",
+        "args": [
+          "convertHandler.getNum(input)"
+        ]
+      }
+    ]
+  },
+  {
+    "title": "convertHandler should correctly default to a numerical input of 1 when no numerical input is provided.",
+    "context": " -> Unit Tests",
+    "state": "passed",
+    "assertions": [
+      {
+        "method": "equal",
+        "args": [
+          "convertHandler.getNum(input)",
+          "1"
+        ]
+      }
+    ]
+  },
+  {
+    "title": "convertHandler should correctly read each valid input unit.",
+    "context": " -> Unit Tests",
+    "state": "passed",
+    "assertions": [
+      {
+        "method": "equal",
+        "args": [
+          "convertHandler.getUnit('10' + ele)",
+          "output[index]"
+        ]
+      }
+    ]
+  },
+  {
+    "title": "convertHandler should correctly return an error for an invalid input unit.",
+    "context": " -> Unit Tests",
+    "state": "passed",
+    "assertions": [
+      {
+        "method": "isNull",
+        "args": [
+          "convertHandler.getUnit(input)"
+        ]
+      }
+    ]
+  },
+  {
+    "title": "convertHandler should return the correct return unit for each valid input unit.",
+    "context": " -> Unit Tests",
+    "state": "passed",
+    "assertions": [
+      {
+        "method": "equal",
+        "args": [
+          "convertHandler.getReturnUnit(ele)",
+          "expect[index]"
+        ]
+      }
+    ]
+  },
+  {
+    "title": "convertHandler should correctly return the spelled-out string unit for each valid input unit.",
+    "context": " -> Unit Tests",
+    "state": "passed",
+    "assertions": [
+      {
+        "method": "equal",
+        "args": [
+          "convertHandler.spellOutUnit(ele)",
+          "expect[index]"
+        ]
+      }
+    ]
+  },
+  {
+    "title": "convertHandler should correctly convert gal to L.",
+    "context": " -> Unit Tests",
+    "state": "passed",
+    "assertions": [
+      {
+        "method": "approximately",
+        "args": [
+          "convertHandler.convert(input[0], input[1])",
+          "expected",
+          "0.1"
+        ]
+      }
+    ]
+  },
+  {
+    "title": "convertHandler should correctly convert L to gal.",
+    "context": " -> Unit Tests",
+    "state": "passed",
+    "assertions": [
+      {
+        "method": "approximately",
+        "args": [
+          "convertHandler.convert(input[0], input[1])",
+          "expected",
+          "0.1"
+        ]
+      }
+    ]
+  },
+  {
+    "title": "convertHandler should correctly convert mi to km.",
+    "context": " -> Unit Tests",
+    "state": "passed",
+    "assertions": [
+      {
+        "method": "approximately",
+        "args": [
+          "convertHandler.convert(input[0], input[1])",
+          "expected",
+          "0.1"
+        ]
+      }
+    ]
+  },
+  {
+    "title": "convertHandler should correctly convert km to mi.",
+    "context": " -> Unit Tests",
+    "state": "passed",
+    "assertions": [
+      {
+        "method": "approximately",
+        "args": [
+          "convertHandler.convert(input[0], input[1])",
+          "expected",
+          "0.1"
+        ]
+      }
+    ]
+  },
+  {
+    "title": "convertHandler should correctly convert lbs to kg.",
+    "context": " -> Unit Tests",
+    "state": "passed",
+    "assertions": [
+      {
+        "method": "approximately",
+        "args": [
+          "convertHandler.convert(input[0], input[1])",
+          "expected",
+          "0.1"
+        ]
+      }
+    ]
+  },
+  {
+    "title": "convertHandler should correctly convert kg to lbs.",
+    "context": " -> Unit Tests",
+    "state": "passed",
+    "assertions": [
+      {
+        "method": "approximately",
+        "args": [
+          "convertHandler.convert(input[0], input[1])",
+          "expected",
+          "0.1"
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Convert a valid input such as 10L: GET request to /api/convert.",
+    "context": " -> Functional Tests",
+    "state": "passed",
+    "assertions": [
+      {
+        "method": "equal",
+        "args": [
+          "res.status",
+          "200"
+        ]
+      },
+      {
+        "method": "equal",
+        "args": [
+          "res.body.initNum",
+          "10"
+        ]
+      },
+      {
+        "method": "equal",
+        "args": [
+          "res.body.initUnit",
+          "'L'"
+        ]
+      },
+      {
+        "method": "approximately",
+        "args": [
+          "res.body.returnNum",
+          "2.64172",
+          "0.1"
+        ]
+      },
+      {
+        "method": "equal",
+        "args": [
+          "res.body.returnUnit",
+          "'gal'"
+        ]
+      },
+      {
+        "method": "equal",
+        "args": [
+          "res.body.string",
+          "'10 liters converts to 2.64172 gallons'"
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Convert an invalid input such as 32g: GET request to /api/convert.",
+    "context": " -> Functional Tests",
+    "state": "passed",
+    "assertions": [
+      {
+        "method": "equal",
+        "args": [
+          "res.status",
+          "200"
+        ]
+      },
+      {
+        "method": "equal",
+        "args": [
+          "res.text",
+          "'invalid unit'"
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Convert an invalid number such as 3/7.2/4kg: GET request to /api/convert.",
+    "context": " -> Functional Tests",
+    "state": "passed",
+    "assertions": [
+      {
+        "method": "equal",
+        "args": [
+          "res.status",
+          "200"
+        ]
+      },
+      {
+        "method": "equal",
+        "args": [
+          "res.text",
+          "'invalid number'"
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Convert an invalid number AND unit such as 3/7.2/4kilomegagram: GET request to /api/convert.",
+    "context": " -> Functional Tests",
+    "state": "passed",
+    "assertions": [
+      {
+        "method": "equal",
+        "args": [
+          "res.status",
+          "200"
+        ]
+      },
+      {
+        "method": "equal",
+        "args": [
+          "res.text",
+          "'invalid number and unit'"
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Convert with no number such as kg: GET request to /api/convert.",
+    "context": " -> Functional Tests",
+    "state": "passed",
+    "assertions": [
+      {
+        "method": "equal",
+        "args": [
+          "res.status",
+          "200"
+        ]
+      },
+      {
+        "method": "equal",
+        "args": [
+          "res.body.initNum",
+          "1"
+        ]
+      },
+      {
+        "method": "equal",
+        "args": [
+          "res.body.initUnit",
+          "'kg'"
+        ]
+      },
+      {
+        "method": "approximately",
+        "args": [
+          "res.body.returnNum",
+          "2.20462",
+          "0.1"
+        ]
+      },
+      {
+        "method": "equal",
+        "args": [
+          "res.body.returnUnit",
+          "'lbs'"
+        ]
+      },
+      {
+        "method": "equal",
+        "args": [
+          "res.body.string",
+          "'1 kilograms converts to 2.20462 pounds'"
+        ]
+      }
+    ]
+  }
+]
