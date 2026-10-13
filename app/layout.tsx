@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Metric-Imperial Converter | Modern & Classic",
-  description: "A precision unit converter bridging imperial and metric standards with elegance.",
+  title: "Precision Metric-Imperial Converter | Telemetry Unit Engine",
+  description: "A precision physical measurement unit conversion workstation bridging imperial and metric systems with real-time URL query integration.",
 };
 
 export default function RootLayout({
@@ -12,8 +12,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="h-full antialiased">
-      <body className="min-h-full flex flex-col bg-[#fcfaf7] text-stone-900 selection:bg-amber-200 selection:text-amber-950">
+    <html lang="en" className="h-full">
+      <body className="min-h-full flex flex-col bg-[#090d16] text-zinc-100 antialiased selection:bg-emerald-500/30 selection:text-emerald-200">
         {children}
       </body>
     </html>

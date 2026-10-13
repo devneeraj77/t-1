@@ -2,22 +2,34 @@
 
 @layer base {
   :root {
-    --bg-main: #fbf9f5;
-    --bg-card: #ffffff;
-    --border-classic: #e8e2d5;
-    --text-primary: #1c1917;
-    --text-secondary: #78716c;
-    --accent: #b45309;
-    --accent-light: #fef3c7;
+    --bg-dark: #090d16;
+    --panel-dark: rgba(15, 23, 42, 0.75);
+    --border-dark: rgba(51, 65, 85, 0.4);
+    --accent-emerald: #10b981;
+    --accent-cyan: #06b6d4;
   }
 
   body {
-    background-color: var(--bg-main);
-    color: var(--text-primary);
+    background-color: var(--bg-dark);
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   }
 }
 
-.font-classic-serif {
-  font-family: "Georgia", "Cambria", "Times New Roman", Times, serif;
+/* Custom background grid pattern for high-tech laboratory cockpit feel */
+.bg-grid-pattern {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Glow effects */
+.glow-emerald {
+  box-shadow: 0 0 25px -5px rgba(16, 185, 129, 0.25);
+}
+
+.glow-cyan {
+  box-shadow: 0 0 25px -5px rgba(6, 182, 212, 0.25);
+}
+
+.glow-rose {
+  box-shadow: 0 0 25px -5px rgba(244, 63, 94, 0.25);
 }
